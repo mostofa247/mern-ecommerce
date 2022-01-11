@@ -6,7 +6,9 @@ const mongoose = require('mongoose');
 
 
 //routes
-const userRoutes = require('./routes/user');
+const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin/auth');
+
 
 
 //environment variable or you say constants
@@ -27,7 +29,8 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO
 
 
 app.use(bodyParser());
-app.use('/api', userRoutes);
+app.use('/api', authRoutes);
+app.use('/api', adminRoutes);
 
 
 
